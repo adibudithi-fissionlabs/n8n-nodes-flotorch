@@ -89,6 +89,22 @@ n8n 1.117.3
     npm link n8n-nodes-flotorch
     ```
 
+9. Start n8n
+
+    ```bash
+    n8n start
+    ```
+
+10. Open n8n in your browser. Create a workflow.
+
+11. Search for 'FloTorch' in the nodes panel. Add a FloTorch node to your workflow.
+
+12. Create a set of FloTorch credentials.
+
+13. Connect a Chat Trigger to the FloTorch node.
+
+14. Chat away!
+
 ## Resources
 
 * [n8n community nodes documentation](https://docs.n8n.io/integrations/#community-nodes)
