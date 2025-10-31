@@ -1,3 +1,5 @@
+![FloTorch symbol](/icons/flotorch.svg)
+
 # n8n-nodes-flotorch
 
 This is an n8n community node. It lets you use FloTorch in your n8n workflows.
@@ -24,7 +26,7 @@ Chat - Connect a Chat Trigger to chat with your custom FloTorch models
 
 ## Credentials
 
-Go to [FloTorch.ai](https://flotorch.ai) to create an account.
+Visit [FloTorch.ai](https://flotorch.ai) to create an account.
 
 ## Compatibility
 
@@ -34,7 +36,58 @@ n8n 1.117.3
 
 ## Usage
 
-[Try it out](https://docs.n8n.io/try-it-out/) and get started.
+[Try out n8n](https://docs.n8n.io/try-it-out/)
+
+[Run custom n8n nodes locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/)
+
+1. Install n8n globally using npm
+
+    ```bash
+    npm install n8n -g
+    ```
+
+2. Clone the repo
+
+    ```bash
+    git clone https://github.com/adibudithi-fissionlabs/n8n-nodes-flotorch.git
+    ```
+
+3. Navigate inside the repo
+
+    ```bash
+    cd n8n-nodes-flotorch
+    ```
+
+4. Install Node.js packages
+
+    ```bash
+    npm install
+    ```
+
+5. Build FloTorch node package
+
+    ```bash
+    npm run build
+    ```
+
+6. Link package
+
+    ```bash
+    npm link
+    ```
+
+7. Navigate to ~/.n8n/custom (in the root directory of your machine). Create it if needed.
+
+    ```bash
+    cd ~/.n8n/custom
+    mkdir ~/.n8n/custom
+    ```
+
+8. Add FloTorch node
+
+    ```bash
+    npm link n8n-nodes-flotorch
+    ```
 
 ## Resources
 
