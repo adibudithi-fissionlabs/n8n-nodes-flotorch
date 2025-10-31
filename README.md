@@ -46,19 +46,19 @@ n8n 1.117.3
     npm install n8n -g
     ```
 
-2. Clone the repo
+2. Clone the repository
 
     ```bash
     git clone https://github.com/adibudithi-fissionlabs/n8n-nodes-flotorch.git
     ```
 
-3. Navigate inside the repo
+3. Navigate inside the folder
 
     ```bash
     cd n8n-nodes-flotorch
     ```
 
-4. Install Node.js packages
+4. Install Node.js dependencies
 
     ```bash
     npm install
