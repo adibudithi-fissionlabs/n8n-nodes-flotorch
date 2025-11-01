@@ -51,8 +51,9 @@ export class FloTorch implements INodeType {
 		try {
 			model = this.getNodeParameter('model', 0) as string;
 		} catch (error) {
-			console.log(error);
-			console.log('No model set');
+			throw new NodeOperationError(this.getNode(), 'Failed to retrieve "model" parameter.', {
+				description: error instanceof Error ? error.message : String(error),
+			});
 		}
 
 		const credentials = await this.getCredentials('flotorchApi');
@@ -66,8 +67,6 @@ export class FloTorch implements INodeType {
 				const item = items[itemIndex];
 				const input_role = 'user';
 				const input_content = item.json['chatInput'] ?? 'chatInput not found';
-
-				console.log(item)
 
 				let options: IHttpRequestOptions = {
 					url: url,
@@ -84,8 +83,6 @@ export class FloTorch implements INodeType {
 					json: true
 				}
 
-				console.log(options)
-
 				const response = await this.helpers.httpRequestWithAuthentication.call(this, 'flotorchApi', options);
 
 				const output_role = response.choices[0].message.role;
@@ -98,8 +95,9 @@ export class FloTorch implements INodeType {
 					}
 				});
 			} catch (error) {
-				throw new NodeOperationError(this.getNode(), error, {
-					itemIndex,
+				throw new NodeOperationError(this.getNode(), 'Failed to process input item.', {
+					description: error instanceof Error ? error.message : String(error),
+					itemIndex: itemIndex
 				});
 			}
 		}
