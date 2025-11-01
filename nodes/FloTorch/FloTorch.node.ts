@@ -14,7 +14,7 @@ export class FloTorch implements INodeType {
 		icon: { light: 'file:../../icons/flotorch.svg', dark: 'file:../../icons/flotorch.svg' },
 		group: ['input'],
 		version: 1,
-		description: 'FloTorch AI Gateway Node',
+		description: 'Use this node to chat with AI models. It expects a chatInput field in your json output. Send your question in the chatInput field.',
 		defaults: {
 			name: 'FloTorch',
 		},
@@ -65,7 +65,9 @@ export class FloTorch implements INodeType {
 			try {
 				const item = items[itemIndex];
 				const input_role = 'user';
-				const input_content = item.json['chatInput'];
+				const input_content = item.json['chatInput'] ?? 'chatInput not found';
+
+				console.log(item)
 
 				let options: IHttpRequestOptions = {
 					url: url,
@@ -82,6 +84,8 @@ export class FloTorch implements INodeType {
 					json: true
 				}
 
+				console.log(options)
+
 				const response = await this.helpers.httpRequestWithAuthentication.call(this, 'flotorchApi', options);
 
 				const output_role = response.choices[0].message.role;
@@ -90,8 +94,7 @@ export class FloTorch implements INodeType {
 				output.push({
 					json: {
 						role: output_role,
-						content: output_content,
-						output: output_content
+						content: output_content
 					}
 				});
 			} catch (error) {

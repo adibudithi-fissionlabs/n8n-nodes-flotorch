@@ -91,7 +91,17 @@ export class FloTorchApi implements ICredentialType {
 	test: ICredentialTestRequest = {
 		request: {
 			baseURL: '={{$credentials?.url}}',
-			url: '/models',
+			url: '/openai/v1/chat/completions',
+			method: 'POST',
+			body: {
+				model: 'flotorch/default',
+				messages: [
+					{
+						role: 'user',
+						content: 'What is the capital of Norway?'
+					}
+				]
+			}
 		},
 	};
 
